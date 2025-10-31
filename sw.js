@@ -1,16 +1,9 @@
-const CACHE_NAME = 'robux-multiplication-cache-v3';
+const CACHE_NAME = 'robux-multiplication-cache-v4';
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
   './index.tsx',
-  './App.tsx',
-  './types.ts',
-  './services/geminiService.ts',
-  './components/DifficultySelector.tsx',
-  './components/GameScreen.tsx',
-  './components/VictoryScreen.tsx',
-  './components/icons.tsx',
   'https://images.unsplash.com/photo-1614728263952-84ea256ec346?q=80&w=1920&h=1080&auto=format&fit=crop',
   'https://unpkg.com/@babel/standalone/babel.min.js'
 ];
