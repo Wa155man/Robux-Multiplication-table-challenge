@@ -2,7 +2,7 @@
   "name": "Robux Multiplication Challenge",
   "short_name": "Robux Math",
   "description": "A fun multiplication game to earn Robux!",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#1a202c",
   "theme_color": "#1a202c",

@@ -1,8 +1,8 @@
 const CACHE_NAME = 'robux-multiplication-cache-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/index.tsx',
+  './',
+  './index.html',
+  './index.tsx',
   'https://images.unsplash.com/photo-1614728263952-84ea256ec346?q=80&w=1920&h=1080&auto=format&fit=crop',
   'https://unpkg.com/@babel/standalone/babel.min.js' // Cache the new script
 ];
