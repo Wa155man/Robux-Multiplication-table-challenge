@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Difficulty, Language } from '../types';
+import { Difficulty, Language } from '../types.ts';
 
 interface DifficultySelectorProps {
   onSelectDifficulty: (difficulty: Difficulty) => void;

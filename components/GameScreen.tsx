@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Difficulty, Question, Language } from '../types';
-import { getQuestionSpeech, getComplimentSpeech } from '../services/geminiService';
+import { Difficulty, Question, Language } from '../types.ts';
+import { getQuestionSpeech, getComplimentSpeech } from '../services/geminiService.ts';
 
 interface GameScreenProps {
   difficulty: Difficulty;

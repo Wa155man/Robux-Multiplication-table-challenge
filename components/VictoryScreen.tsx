@@ -1,5 +1,5 @@
 import React from 'react';
-import { RobuxIcon } from './icons';
+import { RobuxIcon } from './icons.tsx';
 
 interface VictoryScreenProps {
   onPlayAgain: () => void;

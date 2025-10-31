@@ -1,10 +1,18 @@
-const CACHE_NAME = 'robux-multiplication-cache-v2';
+const CACHE_NAME = 'robux-multiplication-cache-v3';
 const urlsToCache = [
   './',
   './index.html',
+  './manifest.json',
   './index.tsx',
+  './App.tsx',
+  './types.ts',
+  './services/geminiService.ts',
+  './components/DifficultySelector.tsx',
+  './components/GameScreen.tsx',
+  './components/VictoryScreen.tsx',
+  './components/icons.tsx',
   'https://images.unsplash.com/photo-1614728263952-84ea256ec346?q=80&w=1920&h=1080&auto=format&fit=crop',
-  'https://unpkg.com/@babel/standalone/babel.min.js' // Cache the new script
+  'https://unpkg.com/@babel/standalone/babel.min.js'
 ];
 
 self.addEventListener('install', event => {
@@ -12,7 +20,10 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        // Use addAll with a catch to prevent install failure if one asset fails
+        return cache.addAll(urlsToCache).catch(err => {
+          console.error('Failed to cache all URLs:', err);
+        });
       })
   );
 });
@@ -21,18 +32,28 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
+        // Cache hit - return response
         if (response) {
           return response;
         }
+
+        // Not in cache - fetch from network
         return fetch(event.request).then(
           response => {
             // Check if we received a valid response
-            if(!response || response.status !== 200) {
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              // Don't cache opaque responses or errors
               return response;
             }
-            // IMPORTANT: We don't cache basic type requests to avoid issues with some hosting providers.
-            // Let's only cache what we are sure about. The main urlsToCache are the most important.
-            
+
+            // Clone the response because it's a stream and can only be consumed once
+            const responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+
             return response;
           }
         );

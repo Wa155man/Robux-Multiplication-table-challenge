@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { GameState, Difficulty, Language } from './types';
-import DifficultySelector from './components/DifficultySelector';
-import GameScreen from './components/GameScreen';
-import VictoryScreen from './components/VictoryScreen';
-import { RobuxIcon, ResetIcon } from './components/icons';
+import { GameState, Difficulty, Language } from './types.ts';
+import DifficultySelector from './components/DifficultySelector.tsx';
+import GameScreen from './components/GameScreen.tsx';
+import VictoryScreen from './components/VictoryScreen.tsx';
+import { RobuxIcon, ResetIcon } from './components/icons.tsx';
 
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>('selecting_difficulty');
