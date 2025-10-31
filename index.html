@@ -59,8 +59,8 @@
     <div id="root"></div>
     <!-- Babel script to translate TSX/JSX in the browser -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Your app script, now with type="text/babel" -->
-    <script type="text/babel" data-type="module" src="./index.tsx"></script>
+    <!-- Your app script, now with presets for React (JSX) and TypeScript -->
+    <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
     
     <script>
       if ('serviceWorker' in navigator) {
