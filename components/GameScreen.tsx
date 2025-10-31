@@ -11,6 +11,7 @@ interface GameScreenProps {
 }
 
 const COMPLIMENTS = ['Good!', 'Excellent!', 'Great job!', 'You are doing well!', 'You are amazing!'];
+const HIGH_SCORE_COMPLIMENTS = ["You are almost there!", "Keep up the good work!", "You are going to win soon!", "You are so smart!"];
 
 // Audio Decoding Helpers
 function decode(base64: string): Uint8Array {
@@ -234,7 +235,8 @@ const GameScreen: React.FC<GameScreenProps> = ({ difficulty, language, robuxScor
       setCorrectAnswersCount(count => count + 1);
       setWrongStreak(0);
       setFeedback({});
-      const randomCompliment = COMPLIMENTS[Math.floor(Math.random() * COMPLIMENTS.length)];
+      const complimentArray = robuxScore >= 950 ? HIGH_SCORE_COMPLIMENTS : COMPLIMENTS;
+      const randomCompliment = complimentArray[Math.floor(Math.random() * complimentArray.length)];
       getComplimentSpeech(randomCompliment).then(playAudio);
     } else {
       const penalty = getPenalty(robuxScore);
@@ -262,7 +264,8 @@ const GameScreen: React.FC<GameScreenProps> = ({ difficulty, language, robuxScor
         setCorrectAnswersCount(count => count + 1);
         setWrongStreak(0);
         setFeedback({});
-        const randomCompliment = COMPLIMENTS[Math.floor(Math.random() * COMPLIMENTS.length)];
+        const complimentArray = robuxScore >= 950 ? HIGH_SCORE_COMPLIMENTS : COMPLIMENTS;
+        const randomCompliment = complimentArray[Math.floor(Math.random() * complimentArray.length)];
         getComplimentSpeech(randomCompliment).then(playAudio);
     } else {
         const penalty = getPenalty(robuxScore);
